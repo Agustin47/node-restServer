@@ -8,13 +8,14 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // // parse aplication/json (formado a traducir)
-// app.use(bodyParser.json);
+app.use(bodyParser.json());
 
-app.use(require('./routes/usuario'));
+/// =========================
+///  Routes
+/// =========================
+app.use(require('./routes/index'));
 
-
-
-mongoose.connect(process.env.URLDB, { useNewUrlParser: true, useCreateIndex: true },
+mongoose.connect(process.env.MongoDB_URL, { useNewUrlParser: true, useCreateIndex: true },
     (err, res) => {
         if (err) throw new err;
 
